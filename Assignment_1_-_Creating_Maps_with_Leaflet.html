@@ -107,10 +107,30 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Map of Gangtok Town (Sikkim, India)</h2></hgroup><article  id="map-of-gangtok-town-sikkim-india">
+<slide class=''><hgroup><h2>Code for Map</h2></hgroup><article  id="code-for-map">
 
-<div id="htmlwidget-448a8d7c5c2606170660" style="width:720px;height:432px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-448a8d7c5c2606170660">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[27.329376,27.318228,27.318319,27.315743,27.317747,27.321752],[88.612407,88.607206,88.60643,88.604827,88.606643,88.611367],10,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":["red","red","steelblue","darkgreen","magenta","purple"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["red","red","steelblue","darkgreen","magenta","purple"],"fillOpacity":0.6,"dashArray":null},null,null,["M G Marg","Deorali Bazar","Forest Office","Monastery","Rope Way Station","Big Bazaar"],null,["M G Marg","Deorali Bazar","Forest Office","Monastery","Rope Way Station","Big Bazaar"],null,null]},{"method":"addLegend","args":[{"colors":["","red","steelblue","darkgreen","magenta","purple"],"labels":["","Market Area","Office","Monastery","Rope Way Station","Shopping Plaza"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"unknown","title":null,"extra":null,"layerId":null,"className":"info legend"}]}],"limits":{"lat":[27.315743,27.329376],"lng":[88.604827,88.612407]}},"evals":[],"jsHooks":[]}</script></article></slide>
+<pre class = 'prettyprint lang-r'>library(&quot;leaflet&quot;)
+locs &lt;- read.csv(&quot;locations_1.csv&quot;)
+
+locs %&gt;%
+
+  leaflet() %&gt;%
+  addTiles() %&gt;%
+  
+  addCircleMarkers(~lng, ~lat, popup = ~as.character(names), 
+  label = ~as.character(names), color = c(&quot;red&quot;, &quot;red&quot;, &quot;steelblue&quot;,
+  &quot;darkgreen&quot;, &quot;magenta&quot;, &quot;purple&quot;), fillColor = c(&quot;red&quot;, &quot;red&quot;, 
+  &quot;steelblue&quot;,&quot;darkgreen&quot;, &quot;magenta&quot;, &quot;purple&quot;),fillOpacity=0.6) %&gt;%
+  
+  addLegend(&quot;bottomright&quot;,labels = c(&quot;&quot;,&quot;Market Area&quot;, &quot;Office&quot;,
+  &quot;Monastery&quot;, &quot;Rope Way Station&quot;, &quot;Shopping Plaza&quot;), 
+  values = ~as.factor(locs$type), colors = c(&quot;&quot;, &quot;red&quot;, 
+  &quot;steelblue&quot;,&quot;darkgreen&quot;, &quot;magenta&quot;, &quot;purple&quot;))</pre>
+
+</article></slide><slide class=''><hgroup><h2>Map of Gangtok Town (Sikkim, India)</h2></hgroup><article  id="map-of-gangtok-town-sikkim-india">
+
+<div id="htmlwidget-e436c364aecd3b6afed2" style="width:720px;height:432px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e436c364aecd3b6afed2">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[27.329376,27.318228,27.318319,27.315743,27.317747,27.321752],[88.612407,88.607206,88.60643,88.604827,88.606643,88.611367],10,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":["red","red","steelblue","darkgreen","magenta","purple"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["red","red","steelblue","darkgreen","magenta","purple"],"fillOpacity":0.6,"dashArray":null},null,null,["M G Marg","Deorali Bazar","Forest Office","Monastery","Rope Way Station","Big Bazaar"],null,["M G Marg","Deorali Bazar","Forest Office","Monastery","Rope Way Station","Big Bazaar"],null,null]},{"method":"addLegend","args":[{"colors":["","red","steelblue","darkgreen","magenta","purple"],"labels":["","Market Area","Office","Monastery","Rope Way Station","Shopping Plaza"],"na_color":null,"na_label":"NA","opacity":0.5,"position":"bottomright","type":"unknown","title":null,"extra":null,"layerId":null,"className":"info legend"}]}],"limits":{"lat":[27.315743,27.329376],"lng":[88.604827,88.612407]}},"evals":[],"jsHooks":[]}</script></article></slide>
 
 
   <slide class="backdrop"></slide>
