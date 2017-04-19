@@ -1,0 +1,26 @@
+---
+title: "Assignment 1 - Creating Maps Using Leaflet"
+author: "Partha S. Ghose"
+date: "4/19/2017"
+output: ioslides_presentation
+---
+
+
+
+## Map of Gangtok Town (Sikkim, India)
+
+```{r, echo=FALSE}
+
+library("leaflet")
+
+locs <- read.csv("locations_1.csv")
+
+locs %>%
+leaflet() %>%
+  addTiles() %>%
+  
+  addCircleMarkers(~lng, ~lat, popup = ~as.character(names), label = ~as.character(names), color = c("red", "red", "steelblue","darkgreen", "magenta", "purple"), fillColor = c("red", "red", "steelblue","darkgreen", "magenta", "purple"),fillOpacity=0.6) %>%
+ 
+  addLegend("bottomright",labels = c("","Market Area", "Office","Monastery", "Rope Way Station", "Shopping Plaza"), values = ~as.factor(locs$type), colors = c("", "red", "steelblue","darkgreen", "magenta", "purple"))
+  
+```
