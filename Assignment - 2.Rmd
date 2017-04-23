@@ -24,7 +24,8 @@ library("ggplot2")
 
 plot_ly(ggplot2::mpg, x = ~drv, y= ~hwy,
         type = "box", color = ~class)%>%
-  layout(boxmode = "group", title = "Highway Milage of Vehicles 
+  layout(boxmode = "group")%>%
+layout(title = "Highway Milage of Vehicles 
   (4 - 4-Wheel Drive; f - Front-Wheel Drive; r - Rear Wheel Drive)",
   xaxis = list(title="Drive"), yaxis = list(title = "Highway Milage"))
 ```
@@ -35,7 +36,8 @@ plot_ly(ggplot2::mpg, x = ~drv, y= ~hwy,
 library("plotly")
 library("ggplot2")
 plot_ly(ggplot2::mpg, x = ~drv, y= ~hwy, type = "box", color = ~class)%>%
-  layout(boxmode = "group", title = "Highway Milage of Vehicles (4 - 4-Wheel Drive; f - Front-Wheel Drive; r - Rear Wheel Drive)",  xaxis = list(title="Drive"), yaxis = list(title = "Highway Milage"))
+  layout(boxmode = "group")%>%
+  layout(title = "Highway Milage of Vehicles (4 - 4-Wheel Drive; f - Front-Wheel Drive; r - Rear Wheel Drive)",  xaxis = list(title="Drive"), yaxis = list(title = "Highway Milage"))
 ```
 
 
