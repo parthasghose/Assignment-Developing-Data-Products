@@ -1,0 +1,70 @@
+---
+title: "Assignment - 2 - Plotting with Plotly and ggplotly"
+author: "Partha S. Ghose"
+date: "4/23/2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Plotting with ggplot2 "mpg" data
+```{r, echo=FALSE,warning=FALSE, message=FALSE, comment=""}
+library("plotly")
+library("ggplot2")
+head(mpg)
+```
+
+## Code - plotly
+```{r, echo=TRUE,warning=FALSE, eval=FALSE, message=FALSE}
+
+library("plotly")
+library("ggplot2")
+
+plot_ly(ggplot2::mpg, x = ~drv, y= ~hwy,
+        type = "box", color = ~class)%>%
+  layout(boxmode = "group", title = "Highway Milage of Vehicles 
+  (4 - 4-Wheel Drive; f - Front-Wheel Drive; r - Rear Wheel Drive)",
+  xaxis = list(title="Drive"), yaxis = list(title = "Highway Milage"))
+```
+
+## Highway Milage of Vehicles  (example - plotly)
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+
+library("plotly")
+library("ggplot2")
+plot_ly(ggplot2::mpg, x = ~drv, y= ~hwy, type = "box", color = ~class)%>%
+  layout(boxmode = "group", title = "Highway Milage of Vehicles (4 - 4-Wheel Drive; f - Front-Wheel Drive; r - Rear Wheel Drive)",  xaxis = list(title="Drive"), yaxis = list(title = "Highway Milage"))
+```
+
+
+## Code - ggplotly
+
+```{r, echo=TRUE,warning=FALSE, eval=FALSE, message=FALSE}
+
+library("plotly")
+library("ggplot2")
+
+g <- ggplot(mpg, aes(x = drv, y= hwy, fill = class))+geom_boxplot()+
+  theme_classic()+labs(title = "Highway Milage of Vehicles", 
+  x = "Drive", y = "Highway Milage")+
+  labs(fill = "Vehicle Class")+
+  scale_x_discrete(breaks=c("4", "f", "r"),
+  labels=c("4-Wheel", "Front Wheel", "Rear Wheel"))
+
+ggplotly(g)%>%layout(boxmode = "group")
+```
+
+
+## Highway Milage of Vehicles (Example - ggplotly)
+
+```{r, echo=FALSE,warning=FALSE, message=FALSE}
+
+library("plotly")
+library("ggplot2")
+g <- ggplot(mpg, aes(x = drv, y= hwy, fill = class))+geom_boxplot()+theme_classic()+labs(title = "Highway Milage of Vehicles", x = "Drive", y = "Highway Milage")+labs(fill = "Vehicle Class")+scale_x_discrete(breaks=c("4", "f", "r"),
+                      labels=c("4-Wheel", "Front Wheel", "Rear Wheel"))
+ggplotly(g)%>%layout(boxmode = "group")
+```
+
